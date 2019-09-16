@@ -15,12 +15,12 @@ namespace Arma3ProjectLife_Crafting.ui
     public partial class CraftingMenu : Form
     {
         //Dropdown Menu
-        private bool isCollapsed;
+        private bool _isCollapsed;
 
         public CraftingMenu()
         {
             InitializeComponent();
-            
+
         }
 
         private void CraftingMenu_Load(object sender, EventArgs e)
@@ -33,7 +33,9 @@ namespace Arma3ProjectLife_Crafting.ui
             //do stuff
             comboBoxVehicleList.Visible = true;
             staticLabelChooseVehicle.Visible = true;
-            comboBoxVehicleList.Items.Add("2017 Lamborghini LP 640-4 Performant");
+
+            comboBoxVehicleList.Items.Clear();
+            loadVehicles("Car");
         }
 
         private void buttonVehicleTypeSUV_Click(object sender, EventArgs e)
@@ -41,7 +43,9 @@ namespace Arma3ProjectLife_Crafting.ui
             //do stuff
             comboBoxVehicleList.Visible = true;
             staticLabelChooseVehicle.Visible = true;
-            comboBoxVehicleList.Items.Add("Chevrolet Suburban");
+
+            comboBoxVehicleList.Items.Clear();
+            loadVehicles("SUV");
         }
 
         private void buttonVehicleTypeTruck_Click(object sender, EventArgs e)
@@ -49,7 +53,9 @@ namespace Arma3ProjectLife_Crafting.ui
             //do stuff
             comboBoxVehicleList.Visible = true;
             staticLabelChooseVehicle.Visible = true;
-            comboBoxVehicleList.Items.Add("Ford F-150 Marker Lights");
+
+            comboBoxVehicleList.Items.Clear();
+            loadVehicles("Truck");
         }
 
         private void buttonVehicleTypeTrailer_Click(object sender, EventArgs e)
@@ -57,7 +63,9 @@ namespace Arma3ProjectLife_Crafting.ui
             //do stuff
             comboBoxVehicleList.Visible = true;
             staticLabelChooseVehicle.Visible = true;
-            comboBoxVehicleList.Items.Add("Lowloader Trailer");
+
+            comboBoxVehicleList.Items.Clear();
+            loadVehicles("Trailer");
         }
 
         private void buttonVehicleTypeOther_Click(object sender, EventArgs e)
@@ -65,7 +73,9 @@ namespace Arma3ProjectLife_Crafting.ui
             //do stuff
             comboBoxVehicleList.Visible = true;
             staticLabelChooseVehicle.Visible = true;
-            comboBoxVehicleList.Items.Add("2018 Harley Davidson Street 500");
+
+            comboBoxVehicleList.Items.Clear();
+            loadVehicles("Other");
         }
 
 
@@ -76,14 +86,14 @@ namespace Arma3ProjectLife_Crafting.ui
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (isCollapsed)
+            if (_isCollapsed)
             {
                 buttonChooseVehicleType.Image = Resources.Collapse_Arrow_20px;
                 panelVehicleType.Height += 10;
                 if (panelVehicleType.Size == panelVehicleType.MaximumSize)
                 {
                     timer1.Stop();
-                    isCollapsed = false;
+                    _isCollapsed = false;
                 }
             }
             else
@@ -93,23 +103,25 @@ namespace Arma3ProjectLife_Crafting.ui
                 if (panelVehicleType.Size == panelVehicleType.MinimumSize)
                 {
                     timer1.Stop();
-                    isCollapsed = true;
+                    _isCollapsed = true;
                 }
             }
         }
 
-        /*
-            private void loadVehicles(string vehicleType)
+
+        private void loadVehicles(string _vehicleType)
         {
-            private string vehicle;
-            //WIP
-            for (int i = 0; i < VehicleManager.dict.Count(); i++)
+            foreach (KeyValuePair<string, VehicleRecipe> entry in VehicleRecipe.GetVehicles())
             {
-                if dict.ContainsValue(vehicleType) {
-                    comboBoxVehicleList.Items.Add(vehicle)
+                string vehicleName = entry.Key;
+                var value = entry.Value;
+
+                if (value.VehicleType == _vehicleType)
+                {
+                    comboBoxVehicleList.Items.Add(vehicleName);
                 }
             }
         }
-        */
+
     }
 }
