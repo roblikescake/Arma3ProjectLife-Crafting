@@ -143,3 +143,4 @@ namespace Arma3ProjectLife_Crafting.utilities
             return allVehicles;
         }
     }
+}

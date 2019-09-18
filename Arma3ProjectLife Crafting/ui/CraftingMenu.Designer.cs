@@ -40,6 +40,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.comboBoxVehicleList = new System.Windows.Forms.ComboBox();
             this.staticLabelChooseVehicle = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelVehicleType.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,7 +172,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 15;
+            this.timer1.Interval = 5;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // comboBoxVehicleList
@@ -198,11 +199,20 @@
             this.staticLabelChooseVehicle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.staticLabelChooseVehicle.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(360, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(350, 283);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            // 
             // CraftingMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1974, 1100);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.staticLabelChooseVehicle);
             this.Controls.Add(this.comboBoxVehicleList);
             this.Controls.Add(this.panelVehicleType);
@@ -231,5 +241,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ComboBox comboBoxVehicleList;
         private System.Windows.Forms.Label staticLabelChooseVehicle;
+        private System.Windows.Forms.Label label1;
     }
 }

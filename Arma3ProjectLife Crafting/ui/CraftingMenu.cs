@@ -35,7 +35,7 @@ namespace Arma3ProjectLife_Crafting.ui
             staticLabelChooseVehicle.Visible = true;
 
             comboBoxVehicleList.Items.Clear();
-            loadVehicles("Car");
+            loadVehiclesByType("Car");
         }
 
         private void buttonVehicleTypeSUV_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Arma3ProjectLife_Crafting.ui
             staticLabelChooseVehicle.Visible = true;
 
             comboBoxVehicleList.Items.Clear();
-            loadVehicles("SUV");
+            loadVehiclesByType("SUV");
         }
 
         private void buttonVehicleTypeTruck_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace Arma3ProjectLife_Crafting.ui
             staticLabelChooseVehicle.Visible = true;
 
             comboBoxVehicleList.Items.Clear();
-            loadVehicles("Truck");
+            loadVehiclesByType("Truck");
         }
 
         private void buttonVehicleTypeTrailer_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace Arma3ProjectLife_Crafting.ui
             staticLabelChooseVehicle.Visible = true;
 
             comboBoxVehicleList.Items.Clear();
-            loadVehicles("Trailer");
+            loadVehiclesByType("Trailer");
         }
 
         private void buttonVehicleTypeOther_Click(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace Arma3ProjectLife_Crafting.ui
             staticLabelChooseVehicle.Visible = true;
 
             comboBoxVehicleList.Items.Clear();
-            loadVehicles("Other");
+            loadVehiclesByType("Other");
         }
 
 
@@ -109,7 +109,7 @@ namespace Arma3ProjectLife_Crafting.ui
         }
 
 
-        private void loadVehicles(string _vehicleType)
+        private void loadVehiclesByType(string _vehicleType)
         {
             foreach (KeyValuePair<string, VehicleRecipe> entry in VehicleRecipe.GetVehicles())
             {
@@ -121,6 +121,18 @@ namespace Arma3ProjectLife_Crafting.ui
                     comboBoxVehicleList.Items.Add(vehicleName);
                 }
             }
+        }
+
+        private void loadVehicleRecipe()
+        {
+            string _vehicleName = comboBoxVehicleList.SelectedText;
+
+            foreach (KeyValuePair<string, VehicleRecipe> entry in VehicleRecipe.GetVehicles())
+            {
+                string vehicleName = entry.Key;
+                var value = entry.Value;
+                //do something
+            } 
         }
 
     }
