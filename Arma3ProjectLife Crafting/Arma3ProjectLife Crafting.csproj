@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="datatypes\VehicleRecipe.cs" />
+    <Compile Include="datatypes\VehicleData.cs" />
     <Compile Include="ui\CraftingMenu.cs">
       <SubType>Form</SubType>
     </Compile>

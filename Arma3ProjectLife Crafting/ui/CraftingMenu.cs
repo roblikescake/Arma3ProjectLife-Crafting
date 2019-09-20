@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Arma3ProjectLife_Crafting.Properties;
 using Arma3ProjectLife_Crafting.utilities;
@@ -36,6 +30,7 @@ namespace Arma3ProjectLife_Crafting.ui
 
             comboBoxVehicleList.Items.Clear();
             loadVehiclesByType("Car");
+            loadVehicleData();
         }
 
         private void buttonVehicleTypeSUV_Click(object sender, EventArgs e)
@@ -111,7 +106,7 @@ namespace Arma3ProjectLife_Crafting.ui
 
         private void loadVehiclesByType(string _vehicleType)
         {
-            foreach (KeyValuePair<string, VehicleRecipe> entry in VehicleRecipe.GetVehicles())
+            foreach (KeyValuePair<string, VehicleData> entry in VehicleData.GetVehicles())
             {
                 string vehicleName = entry.Key;
                 var value = entry.Value;
@@ -123,15 +118,15 @@ namespace Arma3ProjectLife_Crafting.ui
             }
         }
 
-        private void loadVehicleRecipe()
+        private void loadVehicleData()
         {
             string _vehicleName = comboBoxVehicleList.SelectedText;
 
-            foreach (KeyValuePair<string, VehicleRecipe> entry in VehicleRecipe.GetVehicles())
+            foreach (KeyValuePair<string, VehicleData> entry in VehicleData.GetVehicles())
             {
                 string vehicleName = entry.Key;
-                var value = entry.Value;
-                //do something
+                var value = VehicleData.GetVehicles().Values;
+                label1.Text = value.ToString();
             } 
         }
 
