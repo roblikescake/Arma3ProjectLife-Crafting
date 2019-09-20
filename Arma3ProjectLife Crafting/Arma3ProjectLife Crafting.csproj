@@ -70,6 +70,7 @@
     <Compile Include="ui\CraftingMenu.Designer.cs">
       <DependentUpon>CraftingMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="utilities\SelectedVehicleData.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -114,8 +115,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="utilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
