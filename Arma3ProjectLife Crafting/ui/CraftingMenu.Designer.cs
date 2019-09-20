@@ -187,6 +187,7 @@
             this.comboBoxVehicleList.Size = new System.Drawing.Size(350, 29);
             this.comboBoxVehicleList.TabIndex = 3;
             this.comboBoxVehicleList.Visible = false;
+            this.comboBoxVehicleList.SelectionChangeCommitted += new System.EventHandler(this.ComboBoxVehicleList_SelectionChangeCommited);
             // 
             // staticLabelChooseVehicle
             // 

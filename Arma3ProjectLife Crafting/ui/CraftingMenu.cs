@@ -30,7 +30,6 @@ namespace Arma3ProjectLife_Crafting.ui
 
             comboBoxVehicleList.Items.Clear();
             loadVehiclesByType("Car");
-            loadVehicleData();
         }
 
         private void buttonVehicleTypeSUV_Click(object sender, EventArgs e)
@@ -73,6 +72,42 @@ namespace Arma3ProjectLife_Crafting.ui
             loadVehiclesByType("Other");
         }
 
+        private void loadVehiclesByType(string _vehicleType)
+        {
+            foreach (KeyValuePair<string, VehicleData> entry in VehicleData.GetVehicles())
+            {
+                string vehicleName = entry.Key;
+                var value = entry.Value;
+
+                if (value.VehicleType == _vehicleType)
+                {
+                    comboBoxVehicleList.Items.Add(vehicleName);
+                }
+            }
+        }
+
+        //debug crap
+        private void loadVehicleData()
+        {
+            string _vehicleName = comboBoxVehicleList.SelectedItem.ToString();
+
+            if (VehicleData.GetVehicles().ContainsKey(_vehicleName))
+            {
+                //label1.Text = "KEY VehicleName Found: " + _vehicleName;
+                label1.Text = VehicleData.GetVehicles()[_vehicleName].ToString();
+            }
+            else
+            {
+                label1.Text = "NOT Found: " + _vehicleName;
+            }
+        }
+
+
+        //Internal Usage Only
+        private void ComboBoxVehicleList_SelectionChangeCommited (object sender, EventArgs e)
+        {
+            loadVehicleData();
+        }
 
         private void buttonChooseVehicleType_Click(object sender, EventArgs e)
         {
@@ -102,33 +137,5 @@ namespace Arma3ProjectLife_Crafting.ui
                 }
             }
         }
-
-
-        private void loadVehiclesByType(string _vehicleType)
-        {
-            foreach (KeyValuePair<string, VehicleData> entry in VehicleData.GetVehicles())
-            {
-                string vehicleName = entry.Key;
-                var value = entry.Value;
-
-                if (value.VehicleType == _vehicleType)
-                {
-                    comboBoxVehicleList.Items.Add(vehicleName);
-                }
-            }
-        }
-
-        private void loadVehicleData()
-        {
-            string _vehicleName = comboBoxVehicleList.SelectedText;
-
-            foreach (KeyValuePair<string, VehicleData> entry in VehicleData.GetVehicles())
-            {
-                string vehicleName = entry.Key;
-                var value = VehicleData.GetVehicles().Values;
-                label1.Text = value.ToString();
-            } 
-        }
-
     }
 }
