@@ -93,8 +93,7 @@ namespace Arma3ProjectLife_Crafting.ui
 
             if (VehicleData.GetVehicles().ContainsKey(_vehicleName))
             {
-                //label1.Text = "KEY VehicleName Found: " + _vehicleName;
-                label1.Text = VehicleData.GetVehicles()[_vehicleName].ToString();
+                label1.Text = "KEY VehicleName Found: " + _vehicleName;
             }
             else
             {
